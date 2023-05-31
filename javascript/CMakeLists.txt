@@ -24,8 +24,7 @@ set(COMPILE_OPTIONS
     -fno-exceptions
     -fno-rtti
     -g0
-    -Os
-    "SHELL:-s STRICT=1")
+    -Os)
 
 add_compile_options(${COMPILE_OPTIONS})
 
@@ -36,6 +35,7 @@ add_link_options(
     --no-entry
     "SHELL:-s ALLOW_MEMORY_GROWTH=1"
     "SHELL:-s ASSERTIONS=0"
+    "SHELL:-s USE_PTHREADS=1"
     "SHELL:-s DYNAMIC_EXECUTION=0"
     "SHELL:-s ENVIRONMENT='web,node'"
     "SHELL:-s EXPORT_NAME='loadYoga'"
