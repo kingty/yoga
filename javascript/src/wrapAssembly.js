@@ -7,9 +7,9 @@
  * @format
  */
 
-import YGEnums, {Unit, Direction} from './generated/YGEnums';
+import YGEnums, { Unit, Direction } from './generated/YGEnums';
 
-module.exports = lib => {
+export default lib => {
   function patch(prototype, name, fn) {
     const original = prototype[name];
 
@@ -76,7 +76,7 @@ module.exports = lib => {
   function wrapMeasureFunction(measureFunction) {
     return lib.MeasureCallback.implement({
       measure: (...args) => {
-        const {width, height} = measureFunction(...args);
+        const { width, height } = measureFunction(...args);
         return {
           width: width ?? NaN,
           height: height ?? NaN,
@@ -96,7 +96,7 @@ module.exports = lib => {
   });
 
   function wrapDirtiedFunc(dirtiedFunction) {
-    return lib.DirtiedCallback.implement({dirtied: dirtiedFunction});
+    return lib.DirtiedCallback.implement({ dirtied: dirtiedFunction });
   }
 
   patch(lib.Node.prototype, 'setDirtiedFunc', function (original, dirtiedFunc) {
